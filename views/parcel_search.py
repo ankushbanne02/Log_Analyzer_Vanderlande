@@ -27,13 +27,11 @@ def parcel_search_view(df):
                 ev["duration_s"] = (ev["finish"] - ev["ts"]).dt.total_seconds()
 
                 # Add station column (dummy or real if it exists)
-                if "station" not in ev.columns:
-                    ev["station"] = "N/A"  # or extract from data if available
-
+                
                 # ── UI: event table ──────────────────────────────────────
                 st.subheader("Event log")
                 st.dataframe(
-                    ev[["type", "ts", "duration_s", "station"]],
+                    ev[["type", "ts", "duration_s"]],
                     use_container_width=True,
                     hide_index=True,
                 )
@@ -45,7 +43,7 @@ def parcel_search_view(df):
                     x_end="finish",
                     y=["PIC"] * len(ev),
                     color="type",
-                    hover_data=["type", "ts", "duration_s", "station"]
+                    hover_data=["type", "ts", "duration_s"]
                 )
                 
 
