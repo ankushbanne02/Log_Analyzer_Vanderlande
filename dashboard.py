@@ -13,10 +13,10 @@ from views.deregistered_parcels import deregistered_parcels_view
 st.set_page_config(page_title="Vanderlande Parcel Dashboard", layout="wide")
 st.title("📦 Vanderlande Parcel Dashboard")
 
-uploaded = st.file_uploader("Upload raw HLC log (.txt)", type="txt")
+uploaded = st.file_uploader("Upload raw Log File in .txt format", type="txt")
 
 if not uploaded:
-    st.info("Upload a raw HLC .txt log to begin.")
+    st.info("Transformation begin please wait.")
     st.stop()
 
 text = uploaded.read().decode("utf-8")
@@ -56,7 +56,7 @@ with c2:
     st.metric("% Deregistered", f"{dereg_cnt/total*100:.1f}%" if total else "0%")
 with c3:
     st.metric("Avg Cycle (s)", f"{avg_cycle:.1f}")
-    st.metric("Throughput/hr", f"{tph:.1f}")
+    
 
 st.divider()
 
