@@ -16,7 +16,7 @@ st.title("📦 Vanderlande Parcel Dashboard")
 uploaded = st.file_uploader("Upload raw Log File in .txt format", type="txt")
 
 if not uploaded:
-    st.info("Transformation begin please wait.")
+    st.info("upload raw Log File.")
     st.stop()
 
 text = uploaded.read().decode("utf-8")
